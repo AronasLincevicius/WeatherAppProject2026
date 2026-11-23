@@ -5,14 +5,57 @@
 
     <ScrollView>
         <VerticalStackLayout Spacing="6">
-            <Entry
-               x:Name="WeatherQuery"
-               Placeholder="Enter location"
-               Completed="WeatherQueryCompleted"
-               />
+
+            <Picker Title="Select a county"
+        x:Name="CountyPicker"
+        SelectedIndex="0">
+
+                <Picker.Items>
+                    <x:String>Antrim</x:String>
+                    <x:String>Armagh</x:String>
+                    <x:String>Carlow</x:String>
+                    <x:String>Cavan</x:String>
+                    <x:String>Clare</x:String>
+                    <x:String>Cork</x:String>
+                    <x:String>Derry</x:String>
+                    <x:String>Donegal</x:String>
+                    <x:String>Down</x:String>
+                    <x:String>Dublin</x:String>
+                    <x:String>Fermanagh</x:String>
+                    <x:String>Galway</x:String>
+                    <x:String>Kerry</x:String>
+                    <x:String>Kildare</x:String>
+                    <x:String>Kilkenny</x:String>
+                    <x:String>Laois</x:String>
+                    <x:String>Leitrim</x:String>
+                    <x:String>Limerick</x:String>
+                    <x:String>Longford</x:String>
+                    <x:String>Louth</x:String>
+                    <x:String>Mayo</x:String>
+                    <x:String>Meath</x:String>
+                    <x:String>Monaghan</x:String>
+                    <x:String>Offaly</x:String>
+                    <x:String>Roscommon</x:String>
+                    <x:String>Sligo</x:String>
+                    <x:String>Tipperary</x:String>
+                    <x:String>Tyrone</x:String>
+                    <x:String>Waterford</x:String>
+                    <x:String>Westmeath</x:String>
+                    <x:String>Wexford</x:String>
+                    <x:String>Wicklow</x:String>
+                </Picker.Items>
+
+            </Picker>
+
+
+            <Button
+                x:Name="CountyPickerBtn"
+                Clicked="CountyEnteredReceived"
+                Text="Confirm County"
+                />
 
             <Label
-                x:Name="temperature"
+                x:Name="temperatureLbl"
                 Text="hello"
                 VerticalOptions="Center"
                 HorizontalOptions="Center"
