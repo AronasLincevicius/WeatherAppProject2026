@@ -2,6 +2,7 @@
 
 public static class CountyData
 {
+    //dictionary with hardcoded coordinates for all counties in ireland
     public static readonly Dictionary<string, (double Latitude, double Longitude)> Counties = new()
     {
         ["Antrim"] = (54.7195, -6.2072),

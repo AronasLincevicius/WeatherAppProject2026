@@ -1,65 +1,185 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WeatherAppProject.MainPage">
+             x:Class="WeatherAppProject.MainPage"
+             Shell.NavBarIsVisible="False">
+    
+    <!-- Gradient background -->
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#141E30" Offset="0.0" />
+            <GradientStop Color="#243B55" Offset="1.0" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
 
     <ScrollView>
-        <VerticalStackLayout Spacing="6">
+        <VerticalStackLayout Padding="20" Spacing="25">
 
-            <Picker Title="Select a county"
-        x:Name="CountyPicker"
-        SelectedIndex="0">
+            <!-- App heading -->
+            <Label Text="Weather Forecast"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   HorizontalOptions="Center" />
 
-                <Picker.Items>
-                    <x:String>Antrim</x:String>
-                    <x:String>Armagh</x:String>
-                    <x:String>Carlow</x:String>
-                    <x:String>Cavan</x:String>
-                    <x:String>Clare</x:String>
-                    <x:String>Cork</x:String>
-                    <x:String>Derry</x:String>
-                    <x:String>Donegal</x:String>
-                    <x:String>Down</x:String>
-                    <x:String>Dublin</x:String>
-                    <x:String>Fermanagh</x:String>
-                    <x:String>Galway</x:String>
-                    <x:String>Kerry</x:String>
-                    <x:String>Kildare</x:String>
-                    <x:String>Kilkenny</x:String>
-                    <x:String>Laois</x:String>
-                    <x:String>Leitrim</x:String>
-                    <x:String>Limerick</x:String>
-                    <x:String>Longford</x:String>
-                    <x:String>Louth</x:String>
-                    <x:String>Mayo</x:String>
-                    <x:String>Meath</x:String>
-                    <x:String>Monaghan</x:String>
-                    <x:String>Offaly</x:String>
-                    <x:String>Roscommon</x:String>
-                    <x:String>Sligo</x:String>
-                    <x:String>Tipperary</x:String>
-                    <x:String>Tyrone</x:String>
-                    <x:String>Waterford</x:String>
-                    <x:String>Westmeath</x:String>
-                    <x:String>Wexford</x:String>
-                    <x:String>Wicklow</x:String>
-                </Picker.Items>
+            <!-- County selection -->
+            <VerticalStackLayout Spacing="10">
 
-            </Picker>
+                <Label Text="Select your county"
+                       FontSize="16"
+                       TextColor="White" />
 
+                <Picker Title="Select a county"
+                        x:Name="CountyPicker"
+                        SelectedIndex="0"
+                        TextColor="White"
+                        TitleColor="#AABBD0"
+                        BackgroundColor="#334B68">
 
-            <Button
-                x:Name="CountyPickerBtn"
-                Clicked="CountyEnteredReceived"
-                Text="Confirm County"
-                />
+                    <Picker.Items>
+                        <x:String>Antrim</x:String>
+                        <x:String>Armagh</x:String>
+                        <x:String>Carlow</x:String>
+                        <x:String>Cavan</x:String>
+                        <x:String>Clare</x:String>
+                        <x:String>Cork</x:String>
+                        <x:String>Derry</x:String>
+                        <x:String>Donegal</x:String>
+                        <x:String>Down</x:String>
+                        <x:String>Dublin</x:String>
+                        <x:String>Fermanagh</x:String>
+                        <x:String>Galway</x:String>
+                        <x:String>Kerry</x:String>
+                        <x:String>Kildare</x:String>
+                        <x:String>Kilkenny</x:String>
+                        <x:String>Laois</x:String>
+                        <x:String>Leitrim</x:String>
+                        <x:String>Limerick</x:String>
+                        <x:String>Longford</x:String>
+                        <x:String>Louth</x:String>
+                        <x:String>Mayo</x:String>
+                        <x:String>Meath</x:String>
+                        <x:String>Monaghan</x:String>
+                        <x:String>Offaly</x:String>
+                        <x:String>Roscommon</x:String>
+                        <x:String>Sligo</x:String>
+                        <x:String>Tipperary</x:String>
+                        <x:String>Tyrone</x:String>
+                        <x:String>Waterford</x:String>
+                        <x:String>Westmeath</x:String>
+                        <x:String>Wexford</x:String>
+                        <x:String>Wicklow</x:String>
+                    </Picker.Items>
 
-            <Label
-                x:Name="temperatureLbl"
-                Text="hello"
-                VerticalOptions="Center"
-                HorizontalOptions="Center"
-                />
+                </Picker>
+
+                <Button x:Name="CountyPickerBtn"
+                        Text="Confirm County"
+                        Clicked="CountyEnteredReceived"
+                        BackgroundColor="#4A90E2"
+                        TextColor="White"
+                        CornerRadius="12"
+                        HeightRequest="50" />
+
+            </VerticalStackLayout>
+
+            <!-- Main temperature -->
+            <VerticalStackLayout Spacing="5"
+                                 HorizontalOptions="Center">
+
+                <Label
+                    x:Name="locationLbl"
+                    Text="Galway"
+                    FontSize="45"
+                    FontAttributes="Bold"
+                    TextColor="White" 
+                    HorizontalOptions="Center" />
+
+                <Label 
+                    Text="14°C"
+                    x:Name="temperatureLbl"
+                    FontSize="60"
+                    FontAttributes="Bold"
+                    TextColor="White"
+                    HorizontalOptions="Center" />
+
+                <Label 
+                    x:Name="weatherConditionLbl"
+                    Text="Partly Cloudy"
+                    FontSize="20"
+                    TextColor="White"
+                    HorizontalOptions="Center" />
+
+            </VerticalStackLayout>
+
+            <!-- Weather details -->
+            <Grid ColumnDefinitions="*,*,*"
+                  ColumnSpacing="10">
+
+                <Border Grid.Column="0"
+                        BackgroundColor="#334B68"
+                        StrokeThickness="0"
+                        Padding="12"
+                        StrokeShape="RoundRectangle 15">
+
+                    <VerticalStackLayout Spacing="8"
+                                         HorizontalOptions="Center">
+                        <Label Text="Humidity"
+                               TextColor="#B7CBE5"
+                               FontSize="12" />
+                        <Label 
+                            x:Name="humidityLbl"
+                            Text="75%"
+                            TextColor="White"
+                            FontSize="18"
+                            FontAttributes="Bold" />
+                    </VerticalStackLayout>
+
+                </Border>
+
+                <Border Grid.Column="1"
+                        BackgroundColor="#334B68"
+                        StrokeThickness="0"
+                        Padding="12"
+                        StrokeShape="RoundRectangle 15">
+
+                    <VerticalStackLayout Spacing="8"
+                                         HorizontalOptions="Center">
+                        <Label Text="Wind"
+                               TextColor="#B7CBE5"
+                               FontSize="12" />
+                        <Label 
+                            x:Name="windSpeedLbl"
+                            Text="18 km/h"
+                            TextColor="White"
+                            FontSize="18"
+                            FontAttributes="Bold" />
+                    </VerticalStackLayout>
+
+                </Border>
+
+                <Border Grid.Column="2"
+                        BackgroundColor="#334B68"
+                        StrokeThickness="0"
+                        Padding="12"
+                        StrokeShape="RoundRectangle 15">
+
+                    <VerticalStackLayout Spacing="8"
+                                         HorizontalOptions="Center">
+                        <Label Text="UV Index"
+                               TextColor="#B7CBE5"
+                               FontSize="12" />
+                        <Label 
+                            x:Name="uvIndexLbl"
+                            Text="3"
+                            TextColor="White"
+                            FontSize="18"
+                            FontAttributes="Bold" />
+                    </VerticalStackLayout>
+
+                </Border>
+
+            </Grid>
 
         </VerticalStackLayout>
     </ScrollView>
