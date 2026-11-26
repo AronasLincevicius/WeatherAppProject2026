@@ -15,7 +15,7 @@ public class WeatherService
 
     public async Task<WeatherData?> GetWeatherAsync(double latitude, double longitude)
     {
-        string url = $"https://api.open-meteo.com/v1/forecast?latitude={latitude}&longitude={longitude}&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,is_day,precipitation,wind_direction_10m,wind_speed_10m,cloud_cover,visibility,uv_index";
+        string url = $"https://api.open-meteo.com/v1/forecast?latitude={latitude}&longitude={longitude}&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,is_day,precipitation,wind_direction_10m,wind_speed_10m,cloud_cover,visibility,uv_index&hourly=temperature_2m,weather_code,precipitation_probability&timezone=auto";
 
         HttpResponseMessage response = await _client.GetAsync(url);
 

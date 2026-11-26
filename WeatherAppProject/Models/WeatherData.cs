@@ -7,6 +7,9 @@ public class WeatherData
 {
     [JsonPropertyName("current")]
     public CurrentWeather? Current { get; set; }
+
+    [JsonPropertyName("hourly")]
+    public HourlyWeather? Hourly { get; set; }
 }
 
 public class CurrentWeather
